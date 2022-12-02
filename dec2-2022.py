@@ -24,6 +24,32 @@ def gameScore(other, mine):
     return score
 
 
+def myPlay(other, cmd):
+    if (cmd == "X"):
+        if (other == "A"):
+            mine = "Z"
+        elif (other == "B"):
+            mine = "X"
+        elif (other == "C"):
+            mine = "Y"
+    if (cmd == "Y"):
+        if (other == "A"):
+            mine = "X"
+        elif (other == "B"):
+            mine = "Y"
+        elif (other == "C"):
+            mine = "Z"
+    if (cmd == "Z"):
+        if (other == "A"):
+            mine = "Y"
+        elif (other == "B"):
+            mine = "Z"
+        elif (other == "C"):
+            mine = "X"
+    return mine
+
+
+
 f = open("dec2-dataset.txt", "rt")
 lineCount = 0
 totalScore = 0
@@ -33,8 +59,8 @@ for line in f:
     print(line)
     other = line[0]
     mine = line[2]
-    totalScore = totalScore + gameScore(other, mine)
-    print (str(gameScore(other, mine)))
+    totalScore = totalScore + gameScore(other, myPlay(other, mine))
+    print (str(gameScore(other, myPlay(other, mine))))
 
 f.close()
 
