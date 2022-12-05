@@ -43,8 +43,11 @@ for line in f:
             src = int(result.group(2))
             dst = int(result.group(3))
             loops = int(result.group(1))
+            tempList = []
             for x in range(1, loops + 1):
-                allStacks[dst].append(allStacks[src].pop())
+            	tempList.append(allStacks[src].pop())
+            for x in range(1, loops + 1):
+                allStacks[dst].append(tempList.pop())
         else:
             print ("CACA")
             raise Exception("Unable to parse: " + line)
