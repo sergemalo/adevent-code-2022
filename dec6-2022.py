@@ -5,7 +5,7 @@ def hasDupplicatedLetter(str):
         return False;
     for i in range (len(str)-1):
         for j in range (i+1, len(str)):
-            print (str[i] + ";" + str[j])
+            #print (str[i] + ";" + str[j])
             if (str[i] == str[j]):
                 return True
     return False
@@ -15,14 +15,14 @@ def findMarkerAndFirstIdx(buffer, length):
     curIdx = 0
     marker = ""
     while ((not markerFound) and (curIdx < len(buffer))):
-        print (str(buffer[curIdx]))
+        #print (str(buffer[curIdx]))
         while (len(marker) < length):
             marker = marker + buffer[curIdx]
             curIdx = curIdx + 1
-        print (marker)
+        #print (marker)
         while (hasDupplicatedLetter(marker)):
             marker = marker[1:len(marker)]
-        print (marker)
+        #print (marker)
         if (len(marker) == length):
             markerFound = True
     if (not markerFound):
@@ -43,8 +43,9 @@ for line in f:
     lineCount = lineCount + 1
     print(line)
     marker, firstMarkerIdx = findMarkerAndFirstIdx(line, 4)
-    marker, firstMarkerIdx = findMarkerAndFirstIdx(line, 4)
+    SOM, SOMIdx = findMarkerAndFirstIdx(line, 14)
 
 f.close()
 print("Total of lines: " + str(lineCount))
 print("Marker: " + marker + "; First Index = " + str(firstMarkerIdx))
+print("Start Of Message: " + SOM + "; First Index = " + str(SOMIdx))
