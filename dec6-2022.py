@@ -1,19 +1,30 @@
 import re
 
-def findMarkerAndFirstIdx(buffer):
+def hasDupplicatedLetter(str):
+    if (len(str) < 2):
+        return False;
+    for i in range (len(str)-1):
+        for j in range (i+1, len(str)):
+            print (str[i] + ";" + str[j])
+            if (str[i] == str[j]):
+                return True
+    return False
+
+def findMarkerAndFirstIdx(buffer, length):
     markerFound = False
     curIdx = 0
     marker = ""
     while ((not markerFound) and (curIdx < len(buffer))):
         print (str(buffer[curIdx]))
-        while (len(marker) < 4):
+        while (len(marker) < length):
             marker = marker + buffer[curIdx]
             curIdx = curIdx + 1
-        if (cur char found in marker):
-            marker = marker + buffer[curIx]
-        else:
-            marker = maker[
-        curIdx = curIdx + 1
+        print (marker)
+        while (hasDupplicatedLetter(marker)):
+            marker = marker[1:len(marker)]
+        print (marker)
+        if (len(marker) == length):
+            markerFound = True
     if (not markerFound):
         curIdx = 0
         marker = ""
@@ -23,13 +34,16 @@ def findMarkerAndFirstIdx(buffer):
 f = open("dec6-dataset.txt", "rt")
 lineCount = 0
 marker = ""
+SOMIdx = 0
+SOM = ""
 firstMarkerIdx = 0
 
 for line in f:
     line = line.strip()
     lineCount = lineCount + 1
     print(line)
-    marker, firstMarkerIdx = findMarkerAndFirstIdx(line)
+    marker, firstMarkerIdx = findMarkerAndFirstIdx(line, 4)
+    marker, firstMarkerIdx = findMarkerAndFirstIdx(line, 4)
 
 f.close()
 print("Total of lines: " + str(lineCount))
